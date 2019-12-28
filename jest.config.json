@@ -1,0 +1,12 @@
+{
+  "moduleDirectories": [
+    "src",
+    "node_modules"
+  ],
+  "setupFiles": [
+  ],
+  "verbose": true,
+  "collectCoverageFrom": [
+    "src/**/*.js"
+  ]
+}
