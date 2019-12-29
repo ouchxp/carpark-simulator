@@ -1,4 +1,4 @@
-import {
+import executeCommands, {
   isValidLocation,
   PlaceCommand,
   MoveCommand,
@@ -159,5 +159,40 @@ describe('ReportCommand', () => {
     const cmd = new ReportCommand();
     expect(cmd.execute(bus)).toEqual(bus);
     expect(log).toHaveBeenCalledWith('Bus is not in the carpark!');
+  });
+});
+
+describe('executeCommands', () => {
+  it('should take a list of command and execute in sequence', () => {
+    const log = jest.spyOn(global.console, 'log');
+    const bus = { location: null };
+    const commands = [
+      'PLACE 1,2,EAST',
+      'MOVE',
+      'MOVE',
+      'LEFT',
+      'MOVE',
+      'REPORT',
+    ];
+    const expected = { location: { x: 3, y: 3, f: 'NORTH' } };
+    expect(executeCommands(commands, bus)).toEqual(expected);
+    expect(log).toHaveBeenCalledWith('3,3,NORTH');
+  });
+
+  it('should execute commands even if it contains invalid command', () => {
+    const log = jest.spyOn(global.console, 'log');
+    const bus = { location: null };
+    const commands = [
+      'PLACE 1,2,EAST',
+      'MOVE',
+      'MOVE',
+      'GO_BACK',
+      'LEFT',
+      'MOVE',
+      'REPORT',
+    ];
+    const expected = { location: { x: 3, y: 3, f: 'NORTH' } };
+    expect(executeCommands(commands, bus)).toEqual(expected);
+    expect(log).toHaveBeenCalledWith('3,3,NORTH');
   });
 });

@@ -126,3 +126,13 @@ export class ReportCommand {
     return bus;
   }
 }
+
+const commandTypes = [PlaceCommand, MoveCommand, TurnCommand, ReportCommand];
+
+// execute commands in sequence
+export default function executeCommands(commands, initialBus) {
+  return commands
+    .flatMap(s => commandTypes.map(x => x.tryParse(s)))
+    .filter(cmd => cmd)
+    .reduce((bus, cmd) => cmd.execute(bus), initialBus);
+}
