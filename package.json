@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack .",
-    "start": "babel-node src/index.js",
+    "start": "babel-node src/index.js --file input.txt",
     "test": "jest",
     "lint": "eslint src",
     "prettify": "prettier --config ./.prettierrc --write 'src/**/*.js'"
@@ -34,5 +34,8 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
-  "dependencies": {}
+  "dependencies": {
+    "util": "^0.12.1",
+    "yargs": "^15.0.2"
+  }
 }
