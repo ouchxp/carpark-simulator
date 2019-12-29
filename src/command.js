@@ -103,3 +103,26 @@ export class TurnCommand {
     return { ...bus, location };
   }
 }
+
+export class ReportCommand {
+  static tryParse(cmd) {
+    // return null if the command string is not a REPORT command
+    if (cmd !== 'REPORT') {
+      return null;
+    }
+    // create a ReportCommand object from parsed command
+    return new ReportCommand();
+  }
+
+  execute(bus) {
+    if (!bus.location) {
+      // eslint-disable-next-line no-console
+      console.log('Bus is not in the carpark!');
+    } else {
+      const { x, y, f } = bus.location;
+      // eslint-disable-next-line no-console
+      console.log(`${x},${y},${f}`);
+    }
+    return bus;
+  }
+}

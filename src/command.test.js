@@ -1,4 +1,10 @@
-import { isValidLocation, PlaceCommand, MoveCommand, TurnCommand } from './command';
+import {
+  isValidLocation,
+  PlaceCommand,
+  MoveCommand,
+  TurnCommand,
+  ReportCommand,
+} from './command';
 
 describe('isValidLocation', () => {
   it('should return true if given location is valid', () => {
@@ -126,5 +132,32 @@ describe('TurnCommand', () => {
     const cmd = new TurnCommand('RIGHT');
     const expected = { location: null };
     expect(cmd.execute(bus)).toEqual(expected);
+  });
+});
+
+describe('ReportCommand', () => {
+  it('should be able to parse REPORT command', () => {
+    const expected = new ReportCommand();
+    expect(ReportCommand.tryParse('REPORT')).toEqual(expected);
+  });
+
+  it('should return null if it is not a REPORT command', () => {
+    expect(ReportCommand.tryParse('LEFT')).toBeNull();
+  });
+
+  it('should log the bus location, and do not change it', () => {
+    const log = jest.spyOn(global.console, 'log');
+    const bus = { location: { x: 1, y: 1, f: 'NORTH' } };
+    const cmd = new ReportCommand();
+    expect(cmd.execute(bus)).toEqual(bus);
+    expect(log).toHaveBeenCalledWith('1,1,NORTH');
+  });
+
+  it('should log the case if bus not in carpark', () => {
+    const log = jest.spyOn(global.console, 'log');
+    const bus = { location: null };
+    const cmd = new ReportCommand();
+    expect(cmd.execute(bus)).toEqual(bus);
+    expect(log).toHaveBeenCalledWith('Bus is not in the carpark!');
   });
 });
