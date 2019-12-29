@@ -10,6 +10,7 @@
     "build": "webpack .",
     "start": "babel-node src/index.js",
     "test": "jest",
+    "lint": "eslint src",
     "prettify": "prettier --config ./.prettierrc --write 'src/**/*.js'"
   },
   "devDependencies": {

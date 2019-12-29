@@ -10,7 +10,9 @@
   "plugins": ["prettier"],
   "parser": "babel-eslint",
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": ["error", { "exceptMethods": ["execute"] }]
   },
   "settings": {
     "import/resolver": {
