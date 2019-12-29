@@ -47,7 +47,7 @@ export class MoveCommand {
   }
 
   execute(bus) {
-    // if bus is not in carpark, ignore move command
+    // if bus is not in the carpark, ignore move command
     if (!bus.location) {
       return bus;
     }
@@ -73,6 +73,33 @@ export class MoveCommand {
       return bus;
     }
     // move bus to target location
+    return { ...bus, location };
+  }
+}
+
+export class TurnCommand {
+  constructor(direction) {
+    this.direction = direction;
+  }
+
+  static tryParse(cmd) {
+    // return null if the command string is not a LEFT or RIGHT command
+    if (cmd !== 'LEFT' && cmd !== 'RIGHT') {
+      return null;
+    }
+    // create a TurnCommand object from parsed command
+    return new TurnCommand(cmd);
+  }
+
+  execute(bus) {
+    // if bus is not in the carpark, ignore move command
+    if (!bus.location) {
+      return bus;
+    }
+    const facings = ['NORTH', 'WEST', 'SOUTH', 'EAST'];
+    const offset = this.direction === 'LEFT' ? 1 : -1 + facings.length;
+    const idx = (facings.indexOf(bus.location.f) + offset) % facings.length;
+    const location = { ...bus.location, f: facings[idx] };
     return { ...bus, location };
   }
 }

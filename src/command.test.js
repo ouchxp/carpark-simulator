@@ -1,4 +1,4 @@
-import { isValidLocation, PlaceCommand, MoveCommand } from './command';
+import { isValidLocation, PlaceCommand, MoveCommand, TurnCommand } from './command';
 
 describe('isValidLocation', () => {
   it('should return true if given location is valid', () => {
@@ -87,6 +87,43 @@ describe('MoveCommand', () => {
   it('should ignore command if bus is not in the carpark', () => {
     const bus = { location: null };
     const cmd = new MoveCommand();
+    const expected = { location: null };
+    expect(cmd.execute(bus)).toEqual(expected);
+  });
+});
+
+describe('TurnCommand', () => {
+  it('should be able to parse LEFT command', () => {
+    const expected = new TurnCommand('LEFT');
+    expect(TurnCommand.tryParse('LEFT')).toEqual(expected);
+  });
+
+  it('should be able to parse RIGHT command', () => {
+    const expected = new TurnCommand('RIGHT');
+    expect(TurnCommand.tryParse('RIGHT')).toEqual(expected);
+  });
+
+  it('should return null if it is not a LEFT or RIGHT command', () => {
+    expect(TurnCommand.tryParse('MOVE')).toBeNull();
+  });
+
+  it('should turn bus to the left for a LEFT command', () => {
+    const bus = { location: { x: 1, y: 1, f: 'NORTH' } };
+    const cmd = new TurnCommand('LEFT');
+    const expected = { location: { x: 1, y: 1, f: 'WEST' } };
+    expect(cmd.execute(bus)).toEqual(expected);
+  });
+
+  it('should turn bus to the right for a RIGHT command', () => {
+    const bus = { location: { x: 1, y: 1, f: 'NORTH' } };
+    const cmd = new TurnCommand('RIGHT');
+    const expected = { location: { x: 1, y: 1, f: 'EAST' } };
+    expect(cmd.execute(bus)).toEqual(expected);
+  });
+
+  it('should ignore command if bus not in the carpark', () => {
+    const bus = { location: null };
+    const cmd = new TurnCommand('RIGHT');
     const expected = { location: null };
     expect(cmd.execute(bus)).toEqual(expected);
   });
