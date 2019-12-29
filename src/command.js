@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { DIMENSION } from './const';
 
 export function isValidLocation(location) {
@@ -31,6 +32,47 @@ export class PlaceCommand {
       return bus;
     }
     // place bus at given location
+    return { ...bus, location };
+  }
+}
+
+export class MoveCommand {
+  static tryParse(cmd) {
+    // return null if the command string is not a MOVE command
+    if (cmd !== 'MOVE') {
+      return null;
+    }
+    // create a MoveCommand object from parsed command
+    return new MoveCommand();
+  }
+
+  execute(bus) {
+    // if bus is not in carpark, ignore move command
+    if (!bus.location) {
+      return bus;
+    }
+    const { x, y, f } = bus.location;
+    const location = { ...bus.location };
+    switch (f) {
+      case 'WEST':
+        location.x = x - 1;
+        break;
+      case 'EAST':
+        location.x = x + 1;
+        break;
+      case 'SOUTH':
+        location.y = y - 1;
+        break;
+      case 'NORTH':
+        location.y = y + 1;
+        break;
+      default:
+    }
+    // ignore command if the updated location is invalid
+    if (!isValidLocation(location)) {
+      return bus;
+    }
+    // move bus to target location
     return { ...bus, location };
   }
 }
