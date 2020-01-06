@@ -1,26 +1,49 @@
-import fs from 'fs';
-import util from 'util';
-import yargs from 'yargs';
-import executeCommands from './command';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+import { rootSaga } from 'sagas';
+import { rootReducer } from 'reducers';
+import App from 'components/App';
 
-const { argv } = yargs
-  .alias('f', 'file')
-  .nargs('f', 1)
-  .describe('f', 'Load a file')
-  .demandOption(['f'])
-  .help('h')
-  .alias('h', 'help');
+const sagaMiddleware = createSagaMiddleware();
+const middleware = applyMiddleware(sagaMiddleware);
+const store = createStore(() => {}, undefined, composeWithDevTools(middleware));
 
-const { file } = argv;
+store.replaceReducer(rootReducer);
+let rootSagaTask = sagaMiddleware.run(rootSaga);
 
-util
-  .promisify(fs.readFile)(file, 'utf-8')
-  .then(content => {
-    const lines = content.split(/\r?\n/);
-    const initialBus = { location: null };
-    executeCommands(lines, initialBus);
-  })
-  .catch(err => {
-    // eslint-disable-next-line no-console
-    console.error('Cannot read file', err);
-  });
+function render(Component) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component />
+    </Provider>,
+    document.getElementById('root')
+  );
+}
+
+render(App);
+
+// Hot reloading setup for render/reducer/saga
+if (process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    module.hot.accept('components/App', () => {
+      render(App);
+    });
+
+    module.hot.accept('reducers', () => {
+      // eslint-disable-next-line global-require
+      const { rootReducer: newReducer } = require('reducers');
+      store.replaceReducer(newReducer);
+    });
+
+    module.hot.accept('sagas', () => {
+      // eslint-disable-next-line global-require
+      const { rootSaga: newSaga } = require('sagas');
+      rootSagaTask.cancel();
+      rootSagaTask = sagaMiddleware.run(newSaga);
+    });
+  }
+}
