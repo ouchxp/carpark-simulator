@@ -1,8 +1,9 @@
 import React from 'react';
+import Carpark from './Carpark';
 
 const App = () => (
   <>
-    <div>initial setup</div>
+    <Carpark />
   </>
 );
 

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import appReducer from './appReducer';
 
 const catchReducerErrors = reducer => (state, action) => {
   try {
@@ -11,4 +12,8 @@ const catchReducerErrors = reducer => (state, action) => {
   }
 };
 
-export const rootReducer = catchReducerErrors(combineReducers({}));
+export const rootReducer = catchReducerErrors(
+  combineReducers({
+    app: appReducer,
+  })
+);
