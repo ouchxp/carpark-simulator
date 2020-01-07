@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { EXAMPLE_COMMANDS } from '../const';
-import { startCommandSequence } from '../sagas/appSaga';
+import { startCommandSequence } from '../sagas/actions';
 
 const InputArea = styled.textarea`
   font-family: monospace;

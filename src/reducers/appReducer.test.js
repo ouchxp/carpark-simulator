@@ -1,5 +1,6 @@
-import appReducer, { updateBus, appendOutput } from './appReducer';
-import { startCommandSequence, finishCommandSequence } from '../sagas/appSaga';
+import appReducer from './appReducer';
+import { updateBus, appendOutput } from './actions';
+import { startCommandSequence, finishCommandSequence } from '../sagas/actions';
 
 describe('appReducer', () => {
   it('handles updateBus action correctly ', () => {

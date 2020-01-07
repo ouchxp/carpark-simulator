@@ -1,6 +1,6 @@
 import { all, call } from 'redux-saga/effects';
-import executeCommandSequenceSaga from './appSaga';
+import appSaga from './appSaga';
 
 export function* rootSaga() {
-  yield all([call(executeCommandSequenceSaga)]);
+  yield all([call(appSaga)]);
 }

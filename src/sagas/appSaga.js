@@ -1,24 +1,29 @@
-import { put, delay, takeLatest } from 'redux-saga/effects';
+import { put, delay, takeLatest, select } from 'redux-saga/effects';
+import parseCommands from '../commands/command';
+import { updateBus, appendOutput } from '../reducers/actions';
+import { actionTypes, finishCommandSequence } from './actions';
+import { EXECUTION_DELAY } from '../const';
 
-export const actionTypes = {
-  START_COMMAND_SEQUENCE: 'appSaga/START_COMMAND_SEQUENCE',
-  FINISH_COMMAND_SEQUENCE: 'appSaga/FINISH_COMMAND_SEQUENCE',
-};
+export const busSelector = store => store.app.bus;
 
-export function startCommandSequence(commands) {
-  return { type: actionTypes.START_COMMAND_SEQUENCE, commands };
+export function* executeCommand(cmd) {
+  const bus = yield select(busSelector);
+  const [updatedBus, output] = cmd.execute(bus);
+  yield put(updateBus(updatedBus));
+  if (output) {
+    yield put(appendOutput(output));
+  }
+  yield delay(EXECUTION_DELAY);
 }
 
-export function finishCommandSequence() {
-  return { type: actionTypes.FINISH_COMMAND_SEQUENCE };
-}
-
-export function* executeCommandSequence({ commands }) {
-  yield delay(1000);
-  // TODO: to be implemented
+export function* executeCommandSequenceSaga({ commands }) {
+  yield* parseCommands(commands).map(x => executeCommand(x));
   yield put(finishCommandSequence());
 }
 
-export default function* executeCommandSequenceSaga() {
-  yield takeLatest(actionTypes.START_COMMAND_SEQUENCE, executeCommandSequence);
+export default function*() {
+  yield takeLatest(
+    actionTypes.START_COMMAND_SEQUENCE,
+    executeCommandSequenceSaga
+  );
 }
