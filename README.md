@@ -8,9 +8,9 @@ To build a bundled js file
 yarn build
 ```
 
-To run the script
+To run the web application with dev server
 ```
-yarn start --file input.txt
+yarn start
 ```
 
 To lint, test, prettify
