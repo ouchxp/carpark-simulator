@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-classes-per-file
-import { DIMENSION } from './const';
+import { DIMENSION } from '../const';
 
 export function isValidLocation(location) {
   const { x, y } = location;
@@ -29,10 +29,10 @@ export class PlaceCommand {
     const location = { x, y, f };
     // ignore command if the updated location is invalid
     if (!isValidLocation(location)) {
-      return bus;
+      return [bus];
     }
     // place bus at given location
-    return { ...bus, location };
+    return [{ ...bus, location }];
   }
 }
 
@@ -49,7 +49,7 @@ export class MoveCommand {
   execute(bus) {
     // if bus is not in the carpark, ignore move command
     if (!bus.location) {
-      return bus;
+      return [bus];
     }
     const { x, y, f } = bus.location;
     const location = { ...bus.location };
@@ -70,10 +70,10 @@ export class MoveCommand {
     }
     // ignore command if the updated location is invalid
     if (!isValidLocation(location)) {
-      return bus;
+      return [bus];
     }
     // move bus to target location
-    return { ...bus, location };
+    return [{ ...bus, location }];
   }
 }
 
@@ -94,13 +94,13 @@ export class TurnCommand {
   execute(bus) {
     // if bus is not in the carpark, ignore move command
     if (!bus.location) {
-      return bus;
+      return [bus];
     }
     const facings = ['NORTH', 'WEST', 'SOUTH', 'EAST'];
     const offset = this.direction === 'LEFT' ? 1 : -1 + facings.length;
     const idx = (facings.indexOf(bus.location.f) + offset) % facings.length;
     const location = { ...bus.location, f: facings[idx] };
-    return { ...bus, location };
+    return [{ ...bus, location }];
   }
 }
 
@@ -116,23 +116,18 @@ export class ReportCommand {
 
   execute(bus) {
     if (!bus.location) {
-      // eslint-disable-next-line no-console
-      console.log('Bus is not in the carpark!');
-    } else {
-      const { x, y, f } = bus.location;
-      // eslint-disable-next-line no-console
-      console.log(`${x},${y},${f}`);
+      return [bus, 'Bus is not in the carpark!'];
     }
-    return bus;
+    const { x, y, f } = bus.location;
+    return [bus, `${x},${y},${f}`];
   }
 }
 
 const commandTypes = [PlaceCommand, MoveCommand, TurnCommand, ReportCommand];
 
-// execute commands in sequence
-export default function executeCommands(commands, initialBus) {
+// parse a sequence of command string to command objects
+export default function parseCommands(commands) {
   return commands
     .flatMap(s => commandTypes.map(x => x.tryParse(s)))
-    .filter(cmd => cmd)
-    .reduce((bus, cmd) => cmd.execute(bus), initialBus);
+    .filter(cmd => cmd);
 }
