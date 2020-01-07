@@ -12,10 +12,9 @@ const CarparkGrid = styled(Grid).attrs(({ dimension }) => ({
   columns: `repeat(${dimension}, 64px)`,
   rows: `repeat(${dimension}, 64px)`,
 }))`
-  width: fit-content;
   padding: 2px;
-  margin: 0 auto;
-  border: 2px solid gray;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
 `;
 
 const SpaceCell = styled(Cell)`

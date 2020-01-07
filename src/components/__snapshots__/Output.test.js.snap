@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Output renders Output that matches the snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Output)>
+    <Output
+      dispatch={[Function]}
+      output={
+        Array [
+          "hello",
+          "world",
+        ]
+      }
+    >
+      <label>
+        Output:
+      </label>
+      <OutputContainer>
+        <StyledComponent
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "OutputContainer-YbkxD",
+                "isStatic": false,
+                "lastClassName": "fyVKtg",
+                "rules": Array [
+                  "border:1px solid lightgrey;border-radius:4px;background-color:beige;",
+                ],
+              },
+              "displayName": "OutputContainer",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "OutputContainer-YbkxD",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={null}
+        >
+          <div
+            className="OutputContainer-YbkxD fyVKtg"
+          >
+            <OutputEntry
+              key="hello"
+            >
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "OutputEntry-kaurUP",
+                      "isStatic": false,
+                      "lastClassName": "khLSnz",
+                      "rules": Array [
+                        "margin:0 6px;margin-block-start:2px;margin-block-end:2px;",
+                      ],
+                    },
+                    "displayName": "OutputEntry",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "OutputEntry-kaurUP",
+                    "target": "p",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <p
+                  className="OutputEntry-kaurUP khLSnz"
+                >
+                  hello
+                </p>
+              </StyledComponent>
+            </OutputEntry>
+            <OutputEntry
+              key="world"
+            >
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "OutputEntry-kaurUP",
+                      "isStatic": false,
+                      "lastClassName": "khLSnz",
+                      "rules": Array [
+                        "margin:0 6px;margin-block-start:2px;margin-block-end:2px;",
+                      ],
+                    },
+                    "displayName": "OutputEntry",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "OutputEntry-kaurUP",
+                    "target": "p",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <p
+                  className="OutputEntry-kaurUP khLSnz"
+                >
+                  world
+                </p>
+              </StyledComponent>
+            </OutputEntry>
+          </div>
+        </StyledComponent>
+      </OutputContainer>
+    </Output>
+  </Connect(Output)>
+</Provider>
+`;

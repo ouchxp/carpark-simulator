@@ -1,1 +1,8 @@
 export const DIMENSION = 5;
+export const EXAMPLE_COMMANDS = `PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+`;

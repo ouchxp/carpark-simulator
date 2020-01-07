@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders Input that matches the snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Input)>
+    <Input
+      dispatch={[Function]}
+      isRunning={false}
+    >
+      <label
+        htmlFor="commandInput"
+      >
+        Input:
+      </label>
+      <InputArea
+        defaultValue="PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT"
+        disabled={false}
+        id="commandInput"
+        placeholder="write one command each line"
+      >
+        <StyledComponent
+          defaultValue="PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT"
+          disabled={false}
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "InputArea-jnFRdt",
+                "isStatic": false,
+                "lastClassName": "eHYbFz",
+                "rules": Array [
+                  "font-family:monospace;width:-moz-available;width:-webkit-fill-available;height:140px;resize:none;border:1px solid lightgrey;border-radius:4px;",
+                ],
+              },
+              "displayName": "InputArea",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "InputArea-jnFRdt",
+              "target": "textarea",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={
+            Object {
+              "current": <textarea
+                class="InputArea-jnFRdt eHYbFz"
+                id="commandInput"
+                placeholder="write one command each line"
+              >
+                PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+              </textarea>,
+            }
+          }
+          id="commandInput"
+          placeholder="write one command each line"
+        >
+          <textarea
+            className="InputArea-jnFRdt eHYbFz"
+            defaultValue="PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT"
+            disabled={false}
+            id="commandInput"
+            placeholder="write one command each line"
+          />
+        </StyledComponent>
+      </InputArea>
+      <ExecuteButton
+        disabled={false}
+        onClick={[Function]}
+      >
+        <StyledComponent
+          disabled={false}
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "ExecuteButton-zSjZw",
+                "isStatic": false,
+                "lastClassName": "bUimEV",
+                "rules": Array [
+                  "display:block;margin-right:0;margin-left:auto;",
+                ],
+              },
+              "displayName": "ExecuteButton",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "ExecuteButton-zSjZw",
+              "target": "button",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={null}
+          onClick={[Function]}
+        >
+          <button
+            className="ExecuteButton-zSjZw bUimEV"
+            disabled={false}
+            onClick={[Function]}
+          >
+            Execute
+          </button>
+        </StyledComponent>
+      </ExecuteButton>
+    </Input>
+  </Connect(Input)>
+</Provider>
+`;

@@ -41,7 +41,7 @@ exports[`Carpark renders Carpark that matches the snapshot 1`] = `
               "componentStyle": ComponentStyle {
                 "componentId": "CarparkGrid-cManIN",
                 "isStatic": false,
-                "lastClassName": "ISiZK",
+                "lastClassName": "jaaEQW",
                 "rules": Array [
                   "display:grid;height:",
                   [Function],
@@ -66,7 +66,7 @@ exports[`Carpark renders Carpark that matches the snapshot 1`] = `
                   ";",
                   [Function],
                   ";",
-                  "width:fit-content;padding:2px;margin:0 auto;border:2px solid gray;",
+                  "padding:2px;border:1px solid lightgrey;border-radius:4px;",
                 ],
               },
               "displayName": "CarparkGrid",
@@ -99,7 +99,7 @@ exports[`Carpark renders Carpark that matches the snapshot 1`] = `
           gap="2px"
         >
           <div
-            className="Grid__Grid-bojwg CarparkGrid-cManIN ISiZK"
+            className="Grid__Grid-bojwg CarparkGrid-cManIN jaaEQW"
             rows="repeat(5, 64px)"
           >
             <SpaceCell
