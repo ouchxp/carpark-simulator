@@ -40,6 +40,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
+    "path": "^0.12.7",
     "prettier": "^1.19.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.4",
