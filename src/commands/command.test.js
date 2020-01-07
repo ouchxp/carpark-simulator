@@ -16,7 +16,9 @@ describe('isValidLocation', () => {
 
   it('should return false if given location is not valid', () => {
     expect(isValidLocation({ x: -1, y: 0 })).toBe(false);
+    expect(isValidLocation({ x: 0, y: -1 })).toBe(false);
     expect(isValidLocation({ x: 0, y: 5 })).toBe(false);
+    expect(isValidLocation({ x: 5, y: 0 })).toBe(false);
   });
 });
 

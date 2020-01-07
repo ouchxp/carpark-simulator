@@ -3,7 +3,7 @@ import { DIMENSION } from '../const';
 
 export function isValidLocation(location) {
   const { x, y } = location;
-  return x >= 0 && x <= DIMENSION && y >= 0 && y < DIMENSION;
+  return x >= 0 && x < DIMENSION && y >= 0 && y < DIMENSION;
 }
 
 export class PlaceCommand {
