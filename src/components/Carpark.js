@@ -25,7 +25,7 @@ const SpaceCell = styled(Cell)`
 const coordinates = chunk(range(DIMENSION * DIMENSION), DIMENSION)
   .reverse()
   .flat()
-  .map(i => [i % DIMENSION, Math.floor(i / DIMENSION)]);
+  .map((i) => [i % DIMENSION, Math.floor(i / DIMENSION)]);
 
 const Carpark = ({ bus }) => {
   // a helper function that checks if bus is at given location
@@ -53,7 +53,7 @@ Carpark.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   bus: state.app.bus,
 });
 

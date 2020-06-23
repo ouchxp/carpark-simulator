@@ -4,7 +4,7 @@ import { updateBus, appendOutput } from '../reducers/actions';
 import { actionTypes, finishCommandSequence } from './actions';
 import { EXECUTION_DELAY } from '../const';
 
-export const busSelector = store => store.app.bus;
+export const busSelector = (store) => store.app.bus;
 
 export function* executeCommand(cmd) {
   const bus = yield select(busSelector);
@@ -17,11 +17,11 @@ export function* executeCommand(cmd) {
 }
 
 export function* executeCommandSequenceSaga({ commands }) {
-  yield* parseCommands(commands).map(x => executeCommand(x));
+  yield* parseCommands(commands).map((x) => executeCommand(x));
   yield put(finishCommandSequence());
 }
 
-export default function*() {
+export default function* appSaga() {
   yield takeLatest(
     actionTypes.START_COMMAND_SEQUENCE,
     executeCommandSequenceSaga

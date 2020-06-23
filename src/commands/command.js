@@ -128,6 +128,6 @@ const commandTypes = [PlaceCommand, MoveCommand, TurnCommand, ReportCommand];
 // parse a sequence of command string to command objects
 export default function parseCommands(commands) {
   return commands
-    .flatMap(s => commandTypes.map(x => x.tryParse(s)))
-    .filter(cmd => cmd);
+    .flatMap((s) => commandTypes.map((x) => x.tryParse(s)))
+    .filter((cmd) => cmd);
 }

@@ -22,7 +22,7 @@ const Output = ({ output }) => {
     <>
       <label>Output:</label>
       <OutputContainer>
-        {output.map(x => (
+        {output.map((x) => (
           <OutputEntry key={x}>{x}</OutputEntry>
         ))}
       </OutputContainer>
@@ -34,7 +34,7 @@ Output.propTypes = {
   output: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   output: state.app.output,
 });
 

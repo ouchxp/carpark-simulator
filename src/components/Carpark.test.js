@@ -18,13 +18,7 @@ describe('Carpark', () => {
         <Carpark />
       </Provider>
     );
-    expect(
-      wrapper
-        .find('SpaceCell')
-        .at(7)
-        .find('BusIcon')
-        .exists()
-    ).toBe(true);
+    expect(wrapper.find('SpaceCell').at(7).find('BusIcon').exists()).toBe(true);
   });
 
   it('renders Carpark that matches the snapshot', () => {

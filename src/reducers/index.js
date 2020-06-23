@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import appReducer from './appReducer';
 
-const catchReducerErrors = reducer => (state, action) => {
+const catchReducerErrors = (reducer) => (state, action) => {
   try {
     return reducer(state, action);
   } catch (e) {
