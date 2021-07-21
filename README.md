@@ -1,6 +1,6 @@
 # Bus In Carpark Simulator
 
-This Bus In Carpark Simulator simulates a robot operated bus moving in a carpark of dimension 5x5.
+This [Bus In Carpark Simulator](https://raw.githubusercontent.com/ouchxp/carpark-simulator/master/Bus%20In%20Carpark%20Simulator.pdf) simulates a robot operated bus moving in a carpark of dimension 5x5.
 
 #### Usage
 To build a bundled js file
