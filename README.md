@@ -8,6 +8,11 @@ To build a bundled js file
 pnpm build
 ```
 
+To build for deployment (creates public directory)
+```
+pnpm build:deploy
+```
+
 To run the web application with dev server
 ```
 pnpm start
