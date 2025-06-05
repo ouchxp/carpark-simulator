@@ -12,8 +12,7 @@
   },
   "scripts": {
     "build": "webpack .",
-    "build:deploy": "pnpm build && pnpm copy:public",
-    "copy:public": "mkdir -p public && cp -r build/* public/",
+    "build:local": "webpack . --output-path build",
     "start": "webpack-dev-server --progress --profile --colors --config webpack.config.dev.js",
     "test": "jest --config=jest.config.json",
     "lint": "eslint src",

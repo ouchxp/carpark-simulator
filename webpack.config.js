@@ -14,7 +14,7 @@ module.exports = () => ({
   entry: ['./index.js'],
   output: {
     publicPath: ASSET_PATH,
-    path: path.resolve(ROOT_PATH, 'build'),
+    path: path.resolve(ROOT_PATH, 'public'),
     filename: `${BUNDLE_NAME}.js`,
   },
   module: {

@@ -3,14 +3,14 @@
 This [Bus In Carpark Simulator](https://raw.githubusercontent.com/ouchxp/carpark-simulator/master/Bus%20In%20Carpark%20Simulator.pdf) simulates a robot operated bus moving in a carpark of dimension 5x5.
 
 #### Usage
-To build a bundled js file
+To build for production (creates public directory)
 ```
 pnpm build
 ```
 
-To build for deployment (creates public directory)
+To build for local development (creates build directory)
 ```
-pnpm build:deploy
+pnpm build:local
 ```
 
 To run the web application with dev server
