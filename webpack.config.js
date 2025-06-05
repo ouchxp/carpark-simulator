@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const ROOT_PATH = path.resolve(__dirname);
@@ -13,7 +14,7 @@ module.exports = () => ({
   entry: ['./index.js'],
   output: {
     publicPath: ASSET_PATH,
-    path: path.resolve(ROOT_PATH, 'build'),
+    path: path.resolve(ROOT_PATH, 'public'),
     filename: `${BUNDLE_NAME}.js`,
   },
   module: {
@@ -39,6 +40,12 @@ module.exports = () => ({
     new CleanWebpackPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
+    }),
+    new HtmlWebPackPlugin({
+      template: './index.html',
+      filename: './index.html',
+      inject: false,
+      showErrors: false,
     }),
   ],
   optimization: {
