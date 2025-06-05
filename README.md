@@ -5,15 +5,15 @@ This [Bus In Carpark Simulator](https://raw.githubusercontent.com/ouchxp/carpark
 #### Usage
 To build a bundled js file
 ```
-yarn build
+pnpm build
 ```
 
 To run the web application with dev server
 ```
-yarn start
+pnpm start
 ```
 
 To lint, test, prettify
 ```
-yarn prettify && yarn lint && yarn test
+pnpm prettify && pnpm lint && pnpm test
 ```
